@@ -5,20 +5,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'HomeController'
 
     });
-    
-     $stateProvider.state('historique',{
-        url:'/historique',
+
+      $stateProvider.state('historique', {
+        url: '/home/historique',
         templateUrl: 'templates/historique.html'
-       
+      } );
 
-    });
+      $stateProvider.state('notification', {
+      url: '/home/historique/notification',
+      templateUrl: 'templates/notification.html'
+    } );
 
-     $stateProvider.state('notification',{
-        url:'/notification',
-        templateUrl: 'templates/notification.html'
-       
-
-    });
 
     $urlRouterProvider.otherwise('/home');
 
