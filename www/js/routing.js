@@ -9,13 +9,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('historique', {
         url: '/home/historique',
         templateUrl: 'templates/historique.html',
-        controller: 'HomeController'
+        controller: 'HistoriqueController'
     });
 
     $stateProvider.state('notification', {
-        url: '/home/historique/:notification',
+        url: '/home/historique/:id',
         templateUrl: 'templates/notification.html',
-        controller: 'HomeController'
+        controller: 'NotificationController'
     });
 
     $urlRouterProvider.otherwise('/home');

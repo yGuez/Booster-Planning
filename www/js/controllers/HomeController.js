@@ -1,22 +1,15 @@
-app.controller('HomeController', function($scope, $cordovaCalendar, $http, $stateParams){
-   
-var url ='http://foad.itechsup.fr/webservice/rest/server.php?wstoken=579d9e7703518bbe695742e8370d24a1&wsfunction=core_calendar_get_calendar_events&moodlewsrestformat=json';
-    $http.get(url).then(function(response){
-        
-        $scope.notifications = response.data.events;
-        $scope.last = response.data.events.slice(-1)[0];
-        $scope.date = (response.data.events[0].timestart)*1000;
-        $scope.page = $stateParams.notification;
-        console.log($scope.notifications);
+app.controller('HomeController', ['$scope', '$cordovaCalendar','NotificationsService',function($scope, $cordovaCalendar, NotificationsService){
+    NotificationsService.GetNotifications().then(function(notifications){
+        $scope.notifications = notifications;
     });
 
-    
-   $scope.createEvent = function() {
+
+    $scope.createEvent = function() {
         $cordovaCalendar.createEventInteractively({
-            title: $scope.last.name,
+            title:  $scope.notifications[1].name,
             location: 'Itechsup',
-            notes: $scope.last.description,
-            startDate: new Date($scope.date),
+            notes:  $scope.notifications[1].description,
+            startDate: new Date($scope.notifications.timestart*1000),
             endDate: new Date(2016, 08, 17, 12, 0, 0, 0, 0)
         }).then(function (result) {
             console.log("Event created successfully");
@@ -24,5 +17,6 @@ var url ='http://foad.itechsup.fr/webservice/rest/server.php?wstoken=579d9e77035
         }, function (err) {
             console.error("There was an error: " + err);
         });
+
     }
-});
+}]);
