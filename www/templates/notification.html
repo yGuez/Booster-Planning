@@ -1,8 +1,10 @@
 <ion-view view-title="notification">
 <ion-content padding="3" >
     <h4>{{notification.name}}</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nihil, alias veniam hic quibusdam minus nisi. Velit praesentium eligendi unde nulla neque dolore assumenda fugiat aspernatur cupiditate accusamus. Sequi, cumque.</p>
-       
+    <h6>{{(notification.timestart) * 1000 | date : format : timezone}}</h6>
+    <div>
+        {{notification.description}}
+    </div>
 
 </ion-content>
 </ion-view>
