@@ -1,18 +1,13 @@
 <ion-view view-title="historique">
 <ion-content padding="3">
    <ul class="list">
-    <li class="item">
-      <a ui-sref="notification">notification 1</a>
+    <li class="item" ng-repeat="notification in notifications">
+      <a href="#/home/historique/{{notification.id}}">
+        <p>{{notification.name}}</p>
+        <p>{{(notification.timestart) * 1000 | date : format : timezone}}</p>
+      </a>
     </li>
-    <li class="item">
-      <a ui-sref="notification">notification 2</a>
-    </li>
-    <li class="item">
-      <a ui-sref="notification">notification 3</a>
-    </li>
-    <li class="item">
-      <a ui-sref="notification">notification 4</a>
-    </li>
+   
 </ul>
 
 
